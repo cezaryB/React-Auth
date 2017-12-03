@@ -8,6 +8,11 @@ const mongoose = require('mongoose')
 const app = express()
 const router = require('./router')
 
+
+// Setting default promises library for mongoose
+
+mongoose.Promise = global.Promise
+
 // App Setup
 
 mongoose.connect('mongodb://localhost:auth/react-auth')
