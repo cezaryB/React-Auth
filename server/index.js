@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const app = express()
 const router = require('./router')
+const cors = require('cors')
 
 
 // Setting default promises library for mongoose
@@ -18,6 +19,7 @@ mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost:auth/react-auth')
 
 app.use(morgan('combined'))
+app.use(cors())
 app.use(bodyParser.json({ type: '*/*' }))
 router(app)
 
