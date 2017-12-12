@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import * as actions from '../../actions'
 
 
 class Signout extends Component {
@@ -13,4 +14,4 @@ class Signout extends Component {
   }
 }
 
-export default connect(null, null)(Signout)
+export default connect(null, actions)(Signout)
