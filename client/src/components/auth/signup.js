@@ -27,6 +27,7 @@ class Signup extends Component {
     if (!email || !password || !confirmPassword) {
       return this.setState({ fieldsError: true })
     }
+    this.props.signupUser({ email, password })
     this.setState({ passwordError: false, fieldsError: false })
   }
   renderError() {
@@ -35,6 +36,9 @@ class Signup extends Component {
     }
     if (this.state.fieldsError) {
       return <div className='alert alert-danger'>Fields cannot be empty</div>
+    }
+    if (this.props.auth.authError) {
+      return <div className='alert alert-danger'>{this.props.auth.authError}</div>
     }
   }
   render() {
@@ -77,4 +81,10 @@ class Signup extends Component {
   }
 }
 
-export default connect(null, actions)(Signup)
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, actions)(Signup)
